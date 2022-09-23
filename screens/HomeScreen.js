@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
 import { StatusBar } from "expo-status-bar";
+import { bookData } from "./book-data.json";
 
 const HomeScreen = () => {
   // const [isLoading, setLoading] = useState(true);
@@ -59,7 +60,7 @@ const HomeScreen = () => {
         <ActivityIndicator />
       ) : (
         <FlatList
-          data={data}
+          data={bookData}
           keyExtractor={({ id }, index) => id}
           numColumns={2}
           renderItem={({ item }) => (
@@ -67,7 +68,8 @@ const HomeScreen = () => {
               key={item.id}
               year={item.releaseYear}
               title={item.title}
-              imgUrl={item.thumbnailUrl}
+              author={item.author}
+              imgUrl={item.imgUrl}
             />
           )}
         />
