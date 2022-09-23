@@ -1,15 +1,9 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-const SearchBar = (props) => {
+const SearchBar = () => {
   const [text, setText] = useState();
-
-  // useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerShown: false,
-  //   });
-  // }, []);
 
   return (
     <View style={styles.searchBar}>

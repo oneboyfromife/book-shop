@@ -8,28 +8,29 @@ import {
 import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
+import { StatusBar } from "expo-status-bar";
 
 const HomeScreen = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  // const [isLoading, setLoading] = useState(true);
+  // const [data, setData] = useState([]);
 
-  const getBooks = async () => {
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/photos"
-      );
-      const json = await response.json();
-      setData(json);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getBooks = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://jsonplaceholder.typicode.com/photos"
+  //     );
+  //     const json = await response.json();
+  //     setData(json);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    getBooks();
-  }, []);
+  // useEffect(() => {
+  //   getBooks();
+  // }, []);
 
   return (
     <SafeAreaView
@@ -44,7 +45,7 @@ const HomeScreen = () => {
       >
         <Text
           style={{
-            marginTop: 25,
+            marginTop: 30,
             color: "gray",
             fontWeight: "bold",
             fontSize: 20,
@@ -57,21 +58,21 @@ const HomeScreen = () => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        // <FlatList
-        //   data={data}
-        //   keyExtractor={({ id }, index) => id}
-        //   numColumns={2}
-        //   renderItem={({ item }) => (
-        //     <ProductCard
-        //       key={item.id}
-        //       year={item.releaseYear}
-        //       title={item.title}
-        //       // imgUrl={item.albumId}
-        //     />
-        //   )}
-        // />
-        <Text>Hello World</Text>
+        <FlatList
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <ProductCard
+              key={item.id}
+              year={item.releaseYear}
+              title={item.title}
+              imgUrl={item.thumbnailUrl}
+            />
+          )}
+        />
       )}
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };
