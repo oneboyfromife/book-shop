@@ -66,7 +66,7 @@ const HomeScreen = () => {
           renderItem={({ item }) => (
             <ProductCard
               key={item.id}
-              year={item.releaseYear}
+              year={item.published}
               title={item.title}
               author={item.author}
               imgUrl={item.imgUrl}
