@@ -1,7 +1,7 @@
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
-const ProductCard = ({ imgUrl, year, title }) => {
+const ProductCard = ({ imgUrl, year, title, author }) => {
   return (
     <TouchableOpacity>
       <Image source={{ uri: imgUrl }} />
@@ -10,8 +10,42 @@ const ProductCard = ({ imgUrl, year, title }) => {
           flexDirection: "row",
         }}
       >
-        <Text>{title}</Text>
-        <Text>{year}</Text>
+        <Text
+          style={{
+            color: "gray",
+            fontSize: 13,
+          }}
+        >
+          {author}
+        </Text>
+        <Text
+          style={{
+            color: "gray",
+            fontSize: 13,
+            marginVertical: 5,
+          }}
+        >
+          .
+        </Text>
+        <Text
+          style={{
+            color: "gray",
+            fontSize: 13,
+          }}
+        >
+          {year}
+        </Text>
+      </View>
+      <View>
+        <Text
+          style={{
+            color: "gray",
+            fontSize: 16,
+            fontWeight: "bold",
+          }}
+        >
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );
